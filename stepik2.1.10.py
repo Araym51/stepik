@@ -9,13 +9,6 @@
 Пример работы с классом Point
 """
 
-class Constructor:
-    def display(self):
-        print(self.__dict__)
-
-    def add_atribute(self, attr, value):
-        setattr(self, attr, value)
-
 
 class Point:
     def set_coordinates(self, x, y):
@@ -23,8 +16,9 @@ class Point:
         setattr(self, 'y', y)
 
     def get_distance(self, obj):
-        if isinstance(obj, object):
-            print("передан объект")
+        if isinstance(obj, Point):
+            self.result = ((obj.x - self.x) ** 2 + (obj.y - self.y) ** 2) ** 0.5
+            return self.result
         else:
             print("Передана не точка")
 
