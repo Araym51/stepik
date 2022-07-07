@@ -42,48 +42,77 @@ values равное пустому списку;
 метод size() возвращает количество элементов в стеке. Параметры не требуются, тип результата - целое число.
 """
 
+# class Stack:
+#
+#     def __init__(self, obj_list = []):
+#         self.obj_list = obj_list
+#
+#     def push(self, data):
+#         self.obj_list.append(data)
+#
+#     def peek(self):
+#         if self.is_empty():
+#             print(f'Empty Stack'),
+#             return None
+#         else:
+#             return self.obj_list[-1]
+#
+#     def is_empty(self):
+#         if len(self.obj_list) == 0:
+#             return True
+#         else:
+#             return False
+#
+#     def size(self):
+#         return len(self.obj_list)
+#
+#     def pop(self):
+#         if self.is_empty():
+#             self.peek()
+#         else:
+#             return self.obj_list.pop()
+#
+#
+# s = Stack()
+# s.peek()  # распечатает 'Empty Stack'
+# print(s.is_empty())  # распечатает True
+# s.push('cat')  # кладем элемент 'cat' на вершину стека
+# s.push('dog')  # кладем элемент 'dog' на вершину стека
+# print(s.peek())  # распечатает 'dog'
+# s.push(True)  # кладем элемент True на вершину стека
+# print(s.size())  # распечатает 3
+# print(s.is_empty())  # распечатает False
+# s.push(777)  # кладем элемент 777 на вершину стека
+# print(s.pop())  # удаляем элемент 777 с вершины стека и печатаем его
+# print(s.pop())  # удаляем элемент True с вершины стека и печатаем его
+# print(s.size())  # распечатает 2
 
-class Stack:
+"""
+Создайте класс Worker, у которого есть:
 
-    def __init__(self, obj_list = []):
-        self.obj_list = obj_list
+метод __init__, принимающий 4 аргумента: имя, зарплата, пол и паспорт. Необходимо сохранить их в следующих атрибутах: 
+name, salary, gender и passport.
+свойство get_info, которое распечатает информацию о сотруднике в следующем виде: «Worker {name}; passport-{passport}»
+Пример использования класса Worker
 
-    def push(self, data):
-        self.obj_list.append(data)
+bob = Worker('Bob Moore', 330000, 'M', '1635777202')
+bob.get_info() # печатает "Worker Bob Moore; passport-1635777202"
+Ниже имеется список кортежей persons, содержащий информацию о десяти работниках. На основании этих данных необходимо 
+создать 10 экземпляров класса Worker и добавить их в список  worker_objects. Работников в списке следует разместить 
+в том же порядке, в каком они встречаются в списке persons.
 
-    def peek(self):
-        if self.is_empty():
-            print(f'Empty Stack'),
-            return None
-        else:
-            return self.obj_list[-1]
+В этом же порядке для каждого объекта в списке worker_objects вызовите метод get_info
+"""
 
-    def is_empty(self):
-        if len(self.obj_list) == 0:
-            return True
-        else:
-            return False
-
-    def size(self):
-        return len(self.obj_list)
-
-    def pop(self):
-        if self.is_empty():
-            self.peek()
-        else:
-            return self.obj_list.pop()
-
-
-s = Stack()
-s.peek()  # распечатает 'Empty Stack'
-print(s.is_empty())  # распечатает True
-s.push('cat')  # кладем элемент 'cat' на вершину стека
-s.push('dog')  # кладем элемент 'dog' на вершину стека
-print(s.peek())  # распечатает 'dog'
-s.push(True)  # кладем элемент True на вершину стека
-print(s.size())  # распечатает 3
-print(s.is_empty())  # распечатает False
-s.push(777)  # кладем элемент 777 на вершину стека
-print(s.pop())  # удаляем элемент 777 с вершины стека и печатаем его
-print(s.pop())  # удаляем элемент True с вершины стека и печатаем его
-print(s.size())  # распечатает 2
+persons= [
+    ('Allison Hill', 334053, 'M', '1635644202'),
+    ('Megan Mcclain', 191161, 'F', '2101101595'),
+    ('Brandon Hall', 731262, 'M', '6054749119'),
+    ('Michelle Miles', 539898, 'M', '1355368461'),
+    ('Donald Booth', 895667, 'M', '7736670978'),
+    ('Gina Moore', 900581, 'F', '7018476624'),
+    ('James Howard', 460663, 'F', '5461900982'),
+    ('Monica Herrera', 496922, 'M', '2955495768'),
+    ('Sandra Montgomery', 479201, 'M', '5111859731'),
+    ('Amber Perez', 403445, 'M', '0602870126')
+]
