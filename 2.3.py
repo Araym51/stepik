@@ -104,15 +104,62 @@ bob.get_info() # печатает "Worker Bob Moore; passport-1635777202"
 В этом же порядке для каждого объекта в списке worker_objects вызовите метод get_info
 """
 
-persons= [
-    ('Allison Hill', 334053, 'M', '1635644202'),
-    ('Megan Mcclain', 191161, 'F', '2101101595'),
-    ('Brandon Hall', 731262, 'M', '6054749119'),
-    ('Michelle Miles', 539898, 'M', '1355368461'),
-    ('Donald Booth', 895667, 'M', '7736670978'),
-    ('Gina Moore', 900581, 'F', '7018476624'),
-    ('James Howard', 460663, 'F', '5461900982'),
-    ('Monica Herrera', 496922, 'M', '2955495768'),
-    ('Sandra Montgomery', 479201, 'M', '5111859731'),
-    ('Amber Perez', 403445, 'M', '0602870126')
-]
+# persons= [
+#     ('Allison Hill', 334053, 'M', '1635644202'),
+#     ('Megan Mcclain', 191161, 'F', '2101101595'),
+#     ('Brandon Hall', 731262, 'M', '6054749119'),
+#     ('Michelle Miles', 539898, 'M', '1355368461'),
+#     ('Donald Booth', 895667, 'M', '7736670978'),
+#     ('Gina Moore', 900581, 'F', '7018476624'),
+#     ('James Howard', 460663, 'F', '5461900982'),
+#     ('Monica Herrera', 496922, 'M', '2955495768'),
+#     ('Sandra Montgomery', 479201, 'M', '5111859731'),
+#     ('Amber Perez', 403445, 'M', '0602870126')
+# ]
+#
+#
+# class Worker:
+#     def __init__(self, name, salary, gender, passport):
+#         self.name = name
+#         self.salary = salary
+#         self.gender = gender
+#         self.passport = passport
+#
+#     def get_info(self):
+#         return print(f'Worker {self.name}; passport-{self.passport}')
+#
+#
+# worker_objects = []
+# for worker in persons:
+#     person = Worker(worker[0], worker[1], worker[2], worker[3])
+#     worker_objects.append(person)
+#
+# for info in worker_objects:
+#     info.get_info()
+
+
+"""Ваша задача  создать класс CustomLabel, у которого есть:
+- метод __init__, принимающий один обязательный аргумент текст виджета, его необходимо сохранить в атрибут text. 
+И также в метод  может поступать произвольное количество именованных аргументов. Их необходимо сохранять в 
+атрибуты экземпляра под тем же названием
+- метод config, который принимает произвольное количество именованных атрибутов. Он должен создать атрибут 
+с указанным именем или, если этот атрибут уже присутствовал в экземпляре, изменить его на новое значение
+"""
+
+# from tkinter import Label
+
+class CustomLabel:
+    def __init__(self, text, **kwargs):
+        self.text = text
+        for key, value in kwargs.items():
+            self.__dict__[key] = value
+
+    def config(self, **kwargs):
+        self.__dict__.update(kwargs)
+
+
+label = CustomLabel(text="Hello", bd=20, bg='#ffaaaa')
+print(label.__dict__) # {'text': 'Hello', 'bd': 20, 'bg': '#ffaaaa'}
+label.config(color='red', bd=100)
+print(label.__dict__) # {'text': 'Hello', 'bd': 100, 'bg': '#ffaaaa', 'color': 'red'}
+
