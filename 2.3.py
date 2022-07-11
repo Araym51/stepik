@@ -5,24 +5,24 @@
 метод speak принимающий один аргумент, который возвращает строку вида «{name} says {sound}»
 """
 
-# class Dog:
-#     def __init__(self, name, age):
-#         self.name = name
-#         self.age = age
-#
-#     def description(self):
-#         return f'{self.name} is {self.age} years old'
-#
-#     def speak(self, voice):
-#         self.voice = voice
-#         return f'{self.name} says {self.voice}'
-#
-#
-# jack = Dog("Jack", 4)
-#
-# print(jack.description()) # распечатает 'Jack is 4 years old'
-# print(jack.speak("Woof Woof")) # распечатает 'Jack says Woof Woof'
-# print(jack.speak("Bow Wow")) # распечатает 'Jack says Bow Wow'
+class Dog:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def description(self):
+        return f'{self.name} is {self.age} years old'
+
+    def speak(self, voice):
+        self.voice = voice
+        return f'{self.name} says {self.voice}'
+
+
+jack = Dog("Jack", 4)
+
+print(jack.description()) # распечатает 'Jack is 4 years old'
+print(jack.speak("Woof Woof")) # распечатает 'Jack says Woof Woof'
+print(jack.speak("Bow Wow")) # распечатает 'Jack says Bow Wow'
 
 
 
@@ -42,50 +42,50 @@ values равное пустому списку;
 метод size() возвращает количество элементов в стеке. Параметры не требуются, тип результата - целое число.
 """
 
-# class Stack:
-#
-#     def __init__(self, obj_list = []):
-#         self.obj_list = obj_list
-#
-#     def push(self, data):
-#         self.obj_list.append(data)
-#
-#     def peek(self):
-#         if self.is_empty():
-#             print(f'Empty Stack'),
-#             return None
-#         else:
-#             return self.obj_list[-1]
-#
-#     def is_empty(self):
-#         if len(self.obj_list) == 0:
-#             return True
-#         else:
-#             return False
-#
-#     def size(self):
-#         return len(self.obj_list)
-#
-#     def pop(self):
-#         if self.is_empty():
-#             self.peek()
-#         else:
-#             return self.obj_list.pop()
-#
-#
-# s = Stack()
-# s.peek()  # распечатает 'Empty Stack'
-# print(s.is_empty())  # распечатает True
-# s.push('cat')  # кладем элемент 'cat' на вершину стека
-# s.push('dog')  # кладем элемент 'dog' на вершину стека
-# print(s.peek())  # распечатает 'dog'
-# s.push(True)  # кладем элемент True на вершину стека
-# print(s.size())  # распечатает 3
-# print(s.is_empty())  # распечатает False
-# s.push(777)  # кладем элемент 777 на вершину стека
-# print(s.pop())  # удаляем элемент 777 с вершины стека и печатаем его
-# print(s.pop())  # удаляем элемент True с вершины стека и печатаем его
-# print(s.size())  # распечатает 2
+class Stack:
+
+    def __init__(self, obj_list = []):
+        self.obj_list = obj_list
+
+    def push(self, data):
+        self.obj_list.append(data)
+
+    def peek(self):
+        if self.is_empty():
+            print(f'Empty Stack'),
+            return None
+        else:
+            return self.obj_list[-1]
+
+    def is_empty(self):
+        if len(self.obj_list) == 0:
+            return True
+        else:
+            return False
+
+    def size(self):
+        return len(self.obj_list)
+
+    def pop(self):
+        if self.is_empty():
+            self.peek()
+        else:
+            return self.obj_list.pop()
+
+
+s = Stack()
+s.peek()  # распечатает 'Empty Stack'
+print(s.is_empty())  # распечатает True
+s.push('cat')  # кладем элемент 'cat' на вершину стека
+s.push('dog')  # кладем элемент 'dog' на вершину стека
+print(s.peek())  # распечатает 'dog'
+s.push(True)  # кладем элемент True на вершину стека
+print(s.size())  # распечатает 3
+print(s.is_empty())  # распечатает False
+s.push(777)  # кладем элемент 777 на вершину стека
+print(s.pop())  # удаляем элемент 777 с вершины стека и печатаем его
+print(s.pop())  # удаляем элемент True с вершины стека и печатаем его
+print(s.size())  # распечатает 2
 
 """
 Создайте класс Worker, у которого есть:
@@ -104,38 +104,38 @@ bob.get_info() # печатает "Worker Bob Moore; passport-1635777202"
 В этом же порядке для каждого объекта в списке worker_objects вызовите метод get_info
 """
 
-# persons= [
-#     ('Allison Hill', 334053, 'M', '1635644202'),
-#     ('Megan Mcclain', 191161, 'F', '2101101595'),
-#     ('Brandon Hall', 731262, 'M', '6054749119'),
-#     ('Michelle Miles', 539898, 'M', '1355368461'),
-#     ('Donald Booth', 895667, 'M', '7736670978'),
-#     ('Gina Moore', 900581, 'F', '7018476624'),
-#     ('James Howard', 460663, 'F', '5461900982'),
-#     ('Monica Herrera', 496922, 'M', '2955495768'),
-#     ('Sandra Montgomery', 479201, 'M', '5111859731'),
-#     ('Amber Perez', 403445, 'M', '0602870126')
-# ]
-#
-#
-# class Worker:
-#     def __init__(self, name, salary, gender, passport):
-#         self.name = name
-#         self.salary = salary
-#         self.gender = gender
-#         self.passport = passport
-#
-#     def get_info(self):
-#         return print(f'Worker {self.name}; passport-{self.passport}')
-#
-#
-# worker_objects = []
-# for worker in persons:
-#     person = Worker(worker[0], worker[1], worker[2], worker[3])
-#     worker_objects.append(person)
-#
-# for info in worker_objects:
-#     info.get_info()
+persons= [
+    ('Allison Hill', 334053, 'M', '1635644202'),
+    ('Megan Mcclain', 191161, 'F', '2101101595'),
+    ('Brandon Hall', 731262, 'M', '6054749119'),
+    ('Michelle Miles', 539898, 'M', '1355368461'),
+    ('Donald Booth', 895667, 'M', '7736670978'),
+    ('Gina Moore', 900581, 'F', '7018476624'),
+    ('James Howard', 460663, 'F', '5461900982'),
+    ('Monica Herrera', 496922, 'M', '2955495768'),
+    ('Sandra Montgomery', 479201, 'M', '5111859731'),
+    ('Amber Perez', 403445, 'M', '0602870126')
+]
+
+
+class Worker:
+    def __init__(self, name, salary, gender, passport):
+        self.name = name
+        self.salary = salary
+        self.gender = gender
+        self.passport = passport
+
+    def get_info(self):
+        return print(f'Worker {self.name}; passport-{self.passport}')
+
+
+worker_objects = []
+for worker in persons:
+    person = Worker(worker[0], worker[1], worker[2], worker[3])
+    worker_objects.append(person)
+
+for info in worker_objects:
+    info.get_info()
 
 
 """
@@ -148,20 +148,20 @@ bob.get_info() # печатает "Worker Bob Moore; passport-1635777202"
 """
 
 
-# class CustomLabel:
-#     def __init__(self, text, **kwargs):
-#         self.text = text
-#         for key, value in kwargs.items():
-#             self.__dict__[key] = value
-#
-#     def config(self, **kwargs):
-#         self.__dict__.update(kwargs)
-#
-#
-# label = CustomLabel(text="Hello", bd=20, bg='#ffaaaa')
-# print(label.__dict__) # {'text': 'Hello', 'bd': 20, 'bg': '#ffaaaa'}
-# label.config(color='red', bd=100)
-# print(label.__dict__) # {'text': 'Hello', 'bd': 100, 'bg': '#ffaaaa', 'color': 'red'}
+class CustomLabel:
+    def __init__(self, text, **kwargs):
+        self.text = text
+        for key, value in kwargs.items():
+            self.__dict__[key] = value
+
+    def config(self, **kwargs):
+        self.__dict__.update(kwargs)
+
+
+label = CustomLabel(text="Hello", bd=20, bg='#ffaaaa')
+print(label.__dict__) # {'text': 'Hello', 'bd': 20, 'bg': '#ffaaaa'}
+label.config(color='red', bd=100)
+print(label.__dict__) # {'text': 'Hello', 'bd': 100, 'bg': '#ffaaaa', 'color': 'red'}
 
 """  
 Создайте базовый класс Person, у которого есть:
