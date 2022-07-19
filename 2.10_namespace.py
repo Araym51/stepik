@@ -17,13 +17,30 @@ role соответственно
 
 class User:
     def __init__(self, name, role):
-        pass
+        self.name = name
+        self.role = role
 
 
 class Access:
 
-    def get_access(self, value):
-        pass
+    __access_list = ['admin', 'developer']
+
+    @staticmethod
+    def __check_access(role):
+        if role.__dict__['role'] in Access.__access_list:
+            return True
+        else:
+            return False
+
+    @staticmethod
+    def get_access(user):
+        if isinstance(user, User):
+            if Access.__check_access(user):
+                print(f'User {user.__dict__["name"]}: success')
+            else:
+                print(f'AccessDenied')
+        else:
+            print('AccessTypeError')
 
 
 user1 = User('batya99', 'admin')
