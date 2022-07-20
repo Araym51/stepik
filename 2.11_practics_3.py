@@ -8,7 +8,7 @@ in_trash в значение False
     3. метод  remove, который печатает фразу «Файл {name} был удален» и проставляет атрибут is_deleted  в значение True
     4. метод read, который
         - печатает фразу «ErrorReadFileDeleted({name})», если атрибут is_deleted истин, и выходит из метода
-        -печатает фразу «ErrorReadFileTrashed({name})», если атрибут in_trash истин, и выходит из метода
+        - печатает фразу «ErrorReadFileTrashed({name})», если атрибут in_trash истин, и выходит из метода
         - печатает фразу «Прочитали все содержимое файла {self.name}» если файл не удален и не в корзине
     5. метод write, который принимает значение content для записи и
         - печатает фразу «ErrorWriteFileDeleted({name})», если атрибут is_deleted истин, и выходит из метода
@@ -17,17 +17,35 @@ in_trash в значение False
 """
 
 class File:
-    def __init__(self, file):
-        self.file = file
+    def __init__(self, name):
+        self.name = name
+        self.in_trash = False
+        self.is_deleted = False
+
+    def restore_from_trash(self):
+        self.in_trash = False
+        print(f'Файл {self.name} восстановлен из корзины')
 
     def read(self):
-        pass
+        if self.is_deleted:
+            print(f'ErrorReadFileDeleted({self.name})')
+        elif self.in_trash:
+            print(f'ErrorReadFileTrashed({self.name})')
+        else:
+            print(f'Прочитали все содержимое файла {self.name}')
 
     def remove(self):
-        pass
+        self.is_deleted = True
+        print(f'Файл {self.name} был удален')
 
-    def write(self, file):
-        pass
+    def write(self, content):
+        if self.is_deleted:
+            print(f'ErrorWriteFileDeleted({self.name})')
+        elif self.in_trash:
+            print(f'ErrorWriteFileTrashed({self.name})')
+        else:
+            print(f'Записали значение {content} в файл {self.name}')
+
 
 f1 = File('puppies.jpg')
 print(f1.__dict__)  # {'name': 'puppies.jpg', 'in_trash': False, 'is_deleted': False}
