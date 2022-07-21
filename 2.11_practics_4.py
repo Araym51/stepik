@@ -5,6 +5,7 @@
     2. статик-метод  add, который принимает файл и сохраняет его в корзину: для этого нужно добавить его в атрибут
 content и проставить файлу атрибут in_trash значение True. Если в метод add передается не экземпляр класса File,
 необходимо вывести сообщение «В корзину добавлять можно только файл»
+
     3. статик-метод  clear, который запускает процесс очистки файлов в корзине. Необходимо для всех файлов,
 хранящийся в атрибуте content , в порядке их добавления в корзину вызвать метод файла remove. Атрибут content
 после очистки должен стать пустым списком. Сама процедура очистки должна начинаться фразой «Очищаем корзину» и
@@ -39,9 +40,9 @@ class File:
 
     def write(self, content):
         if self.is_deleted:
-            print(f'ErrorReadFileDeleted({self.name})')
+            print(f'ErrorWriteFileDeleted({self.name})')
         elif self.in_trash:
-            print(f'ErrorReadFileTrashed({self.name})')
+            print(f'ErrorWriteFileTrashed({self.name})')
         else:
             print(f'Записали значение {content} в файл {self.name}')
 
@@ -51,15 +52,27 @@ class Trash:
 
     @staticmethod
     def add(file):
-        pass
+        if isinstance(file, File):
+            file.__dict__['in_trash'] = True
+            Trash.content.append(file)
+        else:
+            print(f'В корзину добавлять можно только файл')
 
     @staticmethod
     def clear():
-        pass
+        print("Очищаем корзину")
+        for _ in Trash.content:
+            _.remove()
+        Trash.content = []
+        print('Корзина пуста')
 
     @staticmethod
     def restore():
-        pass
+        print('Восстанавливаем файлы из корзины')
+        for _ in Trash.content:
+            _.restore_from_trash()
+        Trash.content = []
+        print('Корзина пуста')
 
 
 f1 = File('puppies.jpg')
