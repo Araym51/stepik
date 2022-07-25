@@ -39,7 +39,7 @@ class Vector:
     def __add__(self, other):
         if isinstance(other, int):
             res = map(lambda x: x + other, self.values)
-            return Vector(*res) #f'Вектор{tuple(res)}'
+            return Vector(*res)
         elif isinstance(other, Vector) and len(self.values) == len(other.values):
             res = map(sum, zip(self.values, other.values))
             return Vector(*res)

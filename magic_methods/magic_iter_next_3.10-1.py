@@ -8,14 +8,21 @@
 """
 
 class PowerTwo:
-    def __init__(self, two):
-        self.two = two
+    def __init__(self, iter):
+        self.iter = iter
+        self.index = 0
 
     def __iter__(self):
-        pass
+        return self
 
     def __next__(self):
-        pass
+        if self.index <= self.iter:
+            num = 2 ** self.index
+            self.index += 1
+            return num
+        else:
+            raise StopIteration
+
 
 numbers = PowerTwo(2)
 
