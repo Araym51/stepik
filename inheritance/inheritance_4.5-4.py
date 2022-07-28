@@ -45,22 +45,11 @@
 
 class Initialization:
     def __init__(self, capacity, food):
-        self.__capacity = capacity
-        self.food = food
-
-    @property
-    def capacity(self):
-        return self.__capacity
-
-    @capacity.setter
-    def capacity(self, value):
-        if isinstance(value, int):
-            self.__capacity = value
-        else:
+        if not isinstance(capacity, int):
             print('Количество людей должно быть целым числом')
-            delattr(self, '__capacity')
-            delattr(self, 'food')
-
+        else:
+            self.capacity = capacity
+            self.food = food
 
 
 class Vegetarian(Initialization):
@@ -87,16 +76,46 @@ class SweetTooth(Initialization):
         return f'Сладкоежек в Москве {self.capacity}. Их самая любимая еда: {self.food}'
 
     def __eq__(self, other):
-        pass
+        if isinstance(other, (Vegetarian, MeatEater)):
+            if other.capacity == self.capacity:
+                return True
+            else:
+                return False
+        elif isinstance(other, (int)):
+            if other == self.capacity:
+                return True
+            else:
+                return False
+        else:
+            return f'Невозможно сравнить количество сладкоежек с {other}'
 
     def __lt__(self, other):
-        pass
+        if isinstance(other, (Vegetarian, MeatEater)):
+            if other.capacity > self.capacity:
+                return True
+            else:
+                return False
+        elif isinstance(other, (int)):
+            if other > self.capacity:
+                return True
+            else:
+                return False
+        else:
+            return f'Невозможно сравнить количество сладкоежек с {other}'
 
     def __gt__(self, other):
-        pass
-
-
-
+        if isinstance(other, (Vegetarian, MeatEater)):
+            if other.capacity < self.capacity:
+                return True
+            else:
+                return False
+        elif isinstance(other, (int)):
+            if other < self.capacity:
+                return True
+            else:
+                return False
+        else:
+            return f'Невозможно сравнить количество сладкоежек с {other}'
 
 
 v_first = Vegetarian(10000, ['Орехи', 'овощи', 'фрукты'])
